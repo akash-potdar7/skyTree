@@ -1,0 +1,24 @@
+{
+  "name": "/",
+  "children": [
+    {
+      "name": "music",
+      "children": [
+        {
+          "name": "numb.mp3"
+        },
+        {
+          "name": "crawling.mp3"
+        }
+      ]
+    },
+    {
+      "name": "wkspc",
+      "children": [
+        {
+          "name": "source.js"
+        }
+      ]
+    }
+  ]
+}
