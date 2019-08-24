@@ -14,7 +14,7 @@
                     v-else>
                         &#9671;
                 </span>
-                <span>{{ node.name }}</span>
+                <span :style="styleNode(node)">{{ node.name }}</span>
         </div>
         <span
             v-if="expanded">
@@ -30,6 +30,9 @@
 </template>
 
 <script>
+
+import * as ColorHash from 'color-hash';
+const ch = new ColorHash();
 
 export default {
     name: "Tree",
@@ -57,6 +60,13 @@ export default {
                 this.$emit("node-click", this.node);
             }
         },
+        styleNode(node) {
+            let color = 'red';
+            if (!node.children) {
+                color = ch.hex(node.name.split('.').pop());
+            }
+            return { color: color };
+        }
     }
 }
 </script>
