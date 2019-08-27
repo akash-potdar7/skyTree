@@ -20,7 +20,7 @@ export default class TreeUtil {
     _traverse(callback) {
         function exec(node) {
             callback(node);
-            node.children.forEach(exec);
+            node.children && node.children.forEach(exec);
         }
         exec(this.root);
     }
