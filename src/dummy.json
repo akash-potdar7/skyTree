@@ -1,22 +1,48 @@
 {
+  "id": 1001,
   "name": "/",
   "children": [
     {
+      "id": 2000,
+      "name": ".gitIgnore"
+    },
+    {
+      "id": 2001,
       "name": "music",
       "children": [
         {
+          "id": 3001,
           "name": "numb.mp3"
         },
         {
+          "id": 3002,
           "name": "crawling.mp3"
         }
       ]
     },
     {
+      "id": 2002,
       "name": "wkspc",
       "children": [
         {
+          "id": 3001,
           "name": "source.js"
+        },
+        {
+          "id": 3002,
+          "name": "package.json"
+        },
+        {
+          "id": 3003,
+          "name": "yarn.lock"
+        },
+        {
+          "id": 3004,
+          "name": "README.md"
+        },
+        {
+          "id": 3005,
+          "name": "webpack-dev.js"
         }
       ]
     }

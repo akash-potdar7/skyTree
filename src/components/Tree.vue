@@ -1,20 +1,22 @@
 <template>
     <div>
         <div
-            @click="nodeClicked"
             :style="{ 'margin-left': `${depth*20}px` }"
             class="node">
-                <span 
+
+                <span
+                    @click="expanded = !expanded"
                     v-if="hasChildren"
                     class="type">
                         {{ expanded ? "&#9660;" : "&#9658;" }}
                 </span>
                 <span
+                    @click="expanded = !expanded"
                     class="type"
                     v-else>
                         &#9671;
                 </span>
-                <span :style="styleNode(node)">{{ node.name }}</span>
+                <span @click="nodeClicked" class="text">{{ node.name }}</span>
         </div>
         <span
             v-if="expanded">
@@ -22,7 +24,7 @@
                     v-for="child in node.children"
                     :key="child.name"
                     :node="child"
-                    :depth="depth + 1"
+                    :depth="depth + ONE"
                     v-on:node-click="(node) => $emit('node-click', node)"
                 />
         </span>
@@ -46,6 +48,7 @@ export default {
     data: function() {
         return {
             expanded: false,
+            ONE: 1
         }
     },
     computed: {
@@ -55,10 +58,7 @@ export default {
     },
     methods: {
         nodeClicked() {
-            this.expanded = !this.expanded;
-            if (!this.hasChildren) {
-                this.$emit("node-click", this.node);
-            }
+            this.$emit("node-click", this.node);
         },
         styleNode(node) {
             let color = 'red';
@@ -77,5 +77,11 @@ export default {
     }
     .type {
         margin-right: 6px; 
+    }
+    .type:hover {
+        cursor: default;
+    }
+    .text:hover {
+        cursor: pointer;
     }
 </style>
