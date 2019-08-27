@@ -10,16 +10,21 @@ export default new Vuex.Store({
     _root: root,
     currentContextNode: null
   },
+
   mutations: {
 
     SET_CURRENT_CONTEXT_NODE (state, node) {
       state.currentContextNode = node;
-    }
+    },
 
   },
+
   actions: {
+
     setCurrentContextNode({ commit }, node) {
       commit('SET_CURRENT_CONTEXT_NODE', node);
     }
-  }
+ 
+  },
+
 })

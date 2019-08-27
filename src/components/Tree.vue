@@ -1,22 +1,31 @@
 <template>
     <div>
         <div
-            :style="{ 'margin-left': `${depth*20}px` }"
+            @click="nodeClicked"
+            :style="[{ 'margin-left': `${depth*20}px` }, { 'background-color': bgColor}]"
             class="node">
-
-                <span
-                    @click="expanded = !expanded"
+                <div
                     v-if="hasChildren"
-                    class="type">
-                        {{ expanded ? "&#9660;" : "&#9658;" }}
-                </span>
-                <span
-                    @click="expanded = !expanded"
-                    class="type"
+                    class="prepend-icon-wrapper">
+                        <v-icon small>{{prependIcon}}</v-icon>
+                </div>
+                <div
+                    class="prepend-icon-wrapper"
                     v-else>
-                        &#9671;
-                </span>
-                <span @click="nodeClicked" class="text">{{ node.name }}</span>
+                        <v-icon small>fas fa-minus</v-icon>
+                </div>
+                <div class="node-content-wrapper">
+                    <div class="node-label">
+                        <span :style="{'color': labelColor}">
+                            {{ node.name }}
+                        </span>
+                    </div>
+                    <div v-if="hasChildren">
+                        <v-avatar color="#4591FF" size="20" right>
+                            <span class="white--text">{{node.children.length}}</span>
+                        </v-avatar>
+                    </div>
+                </div>
         </div>
         <span
             v-if="expanded">
@@ -32,6 +41,8 @@
 </template>
 
 <script>
+
+import store from '../store';
 
 import * as ColorHash from 'color-hash';
 const ch = new ColorHash();
@@ -53,11 +64,37 @@ export default {
     },
     computed: {
         hasChildren() {
-            return this.node.children
+            const c = this.node.children
+            return c && (c.length > 0);
+        },
+        prependIcon() {
+            return this.expanded ? 'fas fa-minus-square' : 'fas fa-plus-square';
+        },
+        bgColor() {
+            if (!store.state.currentContextNode)
+                return;
+            const node = this.node;
+            const cNode = store.state.currentContextNode;
+            if (cNode.name == node.name) {
+                return '#DBEAFF';
+            }
+            return '';
+        },
+        labelColor() {
+            if (!store.state.currentContextNode)
+                return;
+            const node = this.node;
+            const cNode = store.state.currentContextNode;
+            if (cNode.name == node.name) {
+                return '#1957B1';
+            }
+            return '';
         }
+
     },
     methods: {
         nodeClicked() {
+            this.expanded = !this.expanded;
             this.$emit("node-click", this.node);
         },
         styleNode(node) {
@@ -72,16 +109,60 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+    $pointer: pointer;
+    $flex: flex;
+
+    %user-select-none {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none; 
+    }
+
+    .white--text {
+        color: #fff;
+        font-size: 0.6rem;
+        font-weight: bold;
+    }
+
     .node {
+        @extend %user-select-none;
+        display: $flex;
+        cursor: $pointer;
+        position: relative;
+        align-items: center;
         text-align: left;
+        min-height: 44px;
+        padding: 12px;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        border-radius: 4px;
+        transition: 0.3s all;
     }
-    .type {
-        margin-right: 6px; 
+    .node:hover {
+        background-color: #F9F9F9;
     }
-    .type:hover {
-        cursor: default;
+
+    .prepend-icon-wrapper {
+        margin-right: 6px;
     }
-    .text:hover {
-        cursor: pointer;
+
+    .node-content-wrapper {
+        display: $flex;
+        align-items: center;
+        flex-basis: 0%;
+        flex-grow: 1;
+        flex-shrink: 0;
+        min-width: 0;
+
+        .node-label {
+            flex: 1;
+            font-size: inherit;
+            margin-left: 6px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
     }
 </style>

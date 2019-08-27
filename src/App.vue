@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     nodeClickHandler(node) {
-      store.dispatch('setCurrentContextNode', node)
+      store.dispatch('setCurrentContextNode', node);
       console.log('current node set in the context is', store.state.currentContextNode)
     },
 
