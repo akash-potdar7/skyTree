@@ -3,7 +3,7 @@
     <h3 v-if="!root">
       Initialize heirarchy
     </h3>
-    <div>
+    <div v-if="devENV">
       <v-btn
         v-if="root"
         v-on:click="traverseAll" small>
@@ -25,15 +25,52 @@
       </v-btn>
     </div>
 
-    <v-card
-      v-if="root"
-      max-width="344"
-      class="mx-auto explorer-card">
-        <Tree
-          v-if="root"
-          v-on:node-click="nodeClickHandler"
-          :node="root"/>
-    </v-card>
+    <div class="layout-container">
+
+      <v-container>
+        <v-row no-gutters>
+
+          <v-col cols="3">
+            <div class="hierarchy-wrapper">
+              <v-card
+                v-if="root"
+                class="mx-auto explorer-card">
+                  <Tree
+                    v-if="root"
+                    v-on:node-click="nodeClickHandler"
+                    :node="root"/>
+              </v-card>
+            </div>
+          </v-col>
+            
+          <v-col style="margin-left: 44px;">
+            <div class="tab-layout">
+                <div>
+                  <v-tabs
+                    v-model="tab">
+                    <v-tab
+                      v-for="item in tabs"
+                      :key="item">
+                      {{ item }}
+                    </v-tab>
+                  </v-tabs>
+              
+                  <v-tabs-items v-model="tab">
+                    <v-tab-item>
+                      Operations
+                    </v-tab-item>
+                    <v-tab-item>
+                      Users
+                    </v-tab-item>
+                  </v-tabs-items>
+                </div>
+            </div>
+          </v-col>
+
+        </v-row>
+      </v-container>
+
+    </div>
 
   </div>
 </template>
@@ -50,9 +87,18 @@ export default {
   components: {
     Tree
   },
+  data() {
+    return {
+      tab: null,
+      tabs: ["Actions", "Logins"],
+    }
+  },
   computed: {
     root() {
       return this.$store.state._root;
+    },
+    devENV() {
+      return 'development' == process.env.NODE_ENV;
     }
   },
   methods: {
@@ -92,6 +138,13 @@ export default {
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     margin-top: 60px;
+  }
+
+  .layout-container {
+    display: flex;
+    > .layout-subject {
+      flex: 1;
+    }
   }
 
   .explorer-card {

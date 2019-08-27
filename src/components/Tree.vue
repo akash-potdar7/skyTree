@@ -5,11 +5,13 @@
             :style="[{ 'margin-left': `${depth*20}px` }, { 'background-color': bgColor}]"
             class="node">
                 <div
+                    @click="expanded = !expanded"
                     v-if="hasChildren"
                     class="prepend-icon-wrapper">
                         <v-icon small>{{prependIcon}}</v-icon>
                 </div>
                 <div
+                    @click="expanded = !expanded"
                     class="prepend-icon-wrapper"
                     v-else>
                         <v-icon small>fas fa-minus</v-icon>
@@ -94,7 +96,6 @@ export default {
     },
     methods: {
         nodeClicked() {
-            this.expanded = !this.expanded;
             this.$emit("node-click", this.node);
         },
         styleNode(node) {
