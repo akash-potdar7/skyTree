@@ -5,13 +5,13 @@
             :style="[{ 'margin-left': `${depth*20}px` }, { 'background-color': bgColor}]"
             class="node">
                 <div
-                    @click="expanded = !expanded"
+                    v-on:click.stop="expanded = !expanded"
                     v-if="hasChildren"
                     class="prepend-icon-wrapper">
                         <v-icon small>{{prependIcon}}</v-icon>
                 </div>
                 <div
-                    @click="expanded = !expanded"
+                    v-on:click.stop="expanded = !expanded"
                     class="prepend-icon-wrapper"
                     v-else>
                         <v-icon small>fas fa-minus</v-icon>
