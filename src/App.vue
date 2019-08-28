@@ -59,7 +59,7 @@
               
                   <v-tabs-items v-model="tab">
                     <v-tab-item>
-                      Operations
+                      <HierarchyAction />
                     </v-tab-item>
                     <v-tab-item>
                       <Logins />
@@ -80,6 +80,7 @@
 <script>
 import Tree from "./components/Tree.vue";
 import Logins from "./components/Logins.vue";
+import HierarchyAction from './components/HierarchyAction';
 
 import TreeUtil from "./treeUtil.js";
 import store from "./store.js";
@@ -90,7 +91,8 @@ export default {
   name: "app",
   components: {
     Tree,
-    Logins
+    Logins,
+    HierarchyAction
   },
   data() {
     return {
