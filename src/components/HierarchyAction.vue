@@ -8,10 +8,22 @@
 
                     <v-text-field label="Name" disabled></v-text-field>
 
-                    <v-checkbox small readonly label="Hierarchy allows MERM registration" required></v-checkbox>
-                    <v-checkbox small readonly label="Hierarchy allows VOT registration" required></v-checkbox>
+                    <v-checkbox label="Hierarchy allows MERM registration" required></v-checkbox>
+                    <v-checkbox label="Hierarchy allows VOT registration" required></v-checkbox>
 
-                    <v-divider></v-divider>
+                    <div class="divider-wrapper">
+                        <v-divider></v-divider>
+                    </div>
+
+                    <div class="left-align-content">
+                        <v-btn color="#4591ff" small>
+                            <span class="btn-text">Edit details</span>
+                        </v-btn>
+                    </div>
+
+                    <div class="divider-wrapper">
+                        <v-divider></v-divider>
+                    </div>
 
                     <v-text-field label="Id" disabled></v-text-field>
                     <v-text-field label="ParentId" disabled></v-text-field>
@@ -80,6 +92,12 @@ export default {
         display: $flex;
         flex-direction: column;
         padding: 8px 0;
+    }
+
+    .left-align-content {
+        display: $flex;
+        align-items: flex-start;   
+        padding: 10px 0;
     }
 
     .btn-text {
