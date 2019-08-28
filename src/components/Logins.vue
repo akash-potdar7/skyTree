@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import CreateLogin from './CreateLogin.vue';
+import CreateLogin from '../pages/CreateLogin';
 
 export default {
     components: {
