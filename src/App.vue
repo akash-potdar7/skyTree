@@ -3,7 +3,7 @@
     <h3 v-if="!root">
       Initialize heirarchy
     </h3>
-    <div v-if="devENV">
+    <div v-if="false">
       <v-btn
         v-if="root"
         v-on:click="traverseAll" small>
@@ -51,7 +51,9 @@
                     <v-tab
                       v-for="item in tabs"
                       :key="item">
-                      {{ item }}
+                        <span class="tab-item-title">
+                          {{ item }}
+                        </span>
                     </v-tab>
                   </v-tabs>
               
@@ -60,7 +62,7 @@
                       Operations
                     </v-tab-item>
                     <v-tab-item>
-                      Users
+                      <Logins />
                     </v-tab-item>
                   </v-tabs-items>
                 </div>
@@ -77,6 +79,8 @@
 
 <script>
 import Tree from "./components/Tree.vue";
+import Logins from "./components/Logins.vue";
+
 import TreeUtil from "./treeUtil.js";
 import store from "./store.js";
 
@@ -85,7 +89,8 @@ const treeUtil = new TreeUtil();
 export default {
   name: "app",
   components: {
-    Tree
+    Tree,
+    Logins
   },
   data() {
     return {
@@ -95,7 +100,7 @@ export default {
   },
   computed: {
     root() {
-      return this.$store.state._root;
+      return store.state._root;
     },
     devENV() {
       return 'development' == process.env.NODE_ENV;
@@ -150,6 +155,10 @@ export default {
   .explorer-card {
     margin-left: 20px;
     padding: 16px;
+  }
+
+  .tab-item-title {
+    text-transform: none;
   }
 
 </style>
