@@ -1,6 +1,6 @@
 <template>
     <div id="hierarchy-action-layout">
-        
+
         <v-container>
             <v-row>
               <v-col cols="12">
@@ -33,40 +33,40 @@
                     <v-text-field label="Children" disabled></v-text-field>
                     <v-text-field label="Siblings" disabled></v-text-field>
 
-                    <div class="divider-wrapper">
-                        <v-divider></v-divider>
-                    </div>
-
-                    <div class="create-hierarchy-btn-actions">
-                        <span class="mr-6">
-                            <CreateHierarchy type="level_below" />
-                        </span>
-                        <span class="mr-6">
-                            <CreateHierarchy type="level_same" />
-                        </span>
-                    </div>
-
-                    <div class="divider-wrapper">
-                        <v-divider></v-divider>
-                    </div>
-
-                    <div class="delete-btn-wrapper">
-                        <v-btn small color="#c70039">
-                            <span class="btn-text">Delete this hierarchy</span>
-                        </v-btn>
-
-                        <v-subheader :inset="false">
-                            This hierarchy is the root directory - you cannot delete this root directory.
-                            Please contact your system administrator for help.
-                        </v-subheader>
-
-                    </div>
-
                 </v-form>
+
+                <div class="divider-wrapper">
+                    <v-divider></v-divider>
+                </div>
+
+                <div class="create-hierarchy-btn-actions">
+                    <span class="mr-6">
+                        <CreateHierarchy type="level_below" />
+                    </span>
+                    <span class="mr-6">
+                        <CreateHierarchy type="level_same" />
+                    </span>
+                </div>
+
+                <div class="divider-wrapper">
+                    <v-divider></v-divider>
+                </div>
+
+                <div class="delete-btn-wrapper">
+                    <v-btn small color="#c70039">
+                        <span class="btn-text">Delete this hierarchy</span>
+                    </v-btn>
+
+                    <v-subheader :inset="false">
+                        This hierarchy is the root directory - you cannot delete this root directory.
+                        Please contact your system administrator for help.
+                    </v-subheader>
+                </div>
+
               </v-col>
             </v-row>
         </v-container>
-    
+
     </div>    
 </template>
 
