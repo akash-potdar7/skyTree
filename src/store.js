@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import root from './dummy.json';
+import root from './hierarchies.json';
 
 Vue.use(Vuex)
 
