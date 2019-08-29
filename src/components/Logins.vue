@@ -8,9 +8,7 @@
         </div>
         <div class="update-login-actions">
             <span class="mr-6">
-                <v-btn color="#74B7A2" small>
-                    <span class="btn-text">Change password</span>
-                </v-btn>
+                <ChangePassword />
             </span>
             <span class="mr-6">
                 <v-btn color="#C70039" small @click="deleteLogin">
@@ -45,10 +43,12 @@
 
 <script>
 import CreateLogin from '../pages/CreateLogin';
+import ChangePassword from '../pages/ChangePassword';
 
 export default {
     components: {
-        CreateLogin
+        CreateLogin,
+        ChangePassword
     },
     data() {
         return {

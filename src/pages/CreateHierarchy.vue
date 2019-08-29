@@ -17,8 +17,8 @@
                 <v-form ref="createHierarchyForm" class="px-3" v-model="valid">
                   <v-text-field label="Parent Id" v-model="hierarchyModel.parentId" disabled></v-text-field>
                   <v-text-field label="Level" v-model="hierarchyModel.level" disabled></v-text-field>
-                  <v-text-field label="Name" v-model="hierarchyModel.name" :rules="nameRules" required></v-text-field>
-                  <v-text-field label="Code" v-model="hierarchyModel.code" :rules="codeRules" required></v-text-field>
+                  <v-text-field label="Name*" v-model="hierarchyModel.name" :rules="nameRules" required></v-text-field>
+                  <v-text-field label="Code*" v-model="hierarchyModel.code" :rules="codeRules" required></v-text-field>
                   <v-checkbox label="Hierarchy allows MERM registrations" v-model="hierarchyModel.allowsMERMRegistration" required></v-checkbox>
                   <v-checkbox label="Hierarchy allows VOT registrations" v-model="hierarchyModel.allowsVOTRegistration" required></v-checkbox>
                   <small>*indicates required field</small>
