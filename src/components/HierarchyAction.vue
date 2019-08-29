@@ -39,14 +39,10 @@
 
                     <div class="create-hierarchy-btn-actions">
                         <span class="mr-6">
-                            <v-btn color="#7E7E7E" small>
-                                <span class="btn-text">Add hierarchy below this</span>
-                            </v-btn>
+                            <CreateHierarchy type="level_below" />
                         </span>
                         <span class="mr-6">
-                            <v-btn color="#7E7E7E" small>
-                                <span class="btn-text">Add hierarchy at this level</span>
-                            </v-btn>
+                            <CreateHierarchy type="level_same" />
                         </span>
                     </div>
 
@@ -75,7 +71,13 @@
 </template>
 
 <script>
+import CreateHierarchy from '../pages/CreateHierarchy';
+
 export default {
+
+    components: {
+        CreateHierarchy
+    },
 
     data: () => ({
         valid: true,

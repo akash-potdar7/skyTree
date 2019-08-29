@@ -17,7 +17,7 @@
                 <v-form ref="createloginForm" class="px-3" v-model="valid">
                   <v-text-field label="Hierarchy Id" v-model="userModel.heirarchyId" disabled></v-text-field>
                   <v-text-field label="Username" v-model="userModel.username" :rules="usernameRules" required></v-text-field>
-                  <v-text-field label="Password" type="password" v-model="userModel.password" :rules="passworddRules" required></v-text-field>
+                  <v-text-field label="Password" type="password" v-model="userModel.password" :rules="passwordRules" required></v-text-field>
                   <v-text-field label="Re-enter the Password" type="password" v-model="userModel.reEnterPassword" :rules="reEnterPasswordRules" required></v-text-field>
                   <v-checkbox label="Login should have view only access" v-model="userModel.viewOnly" required></v-checkbox>
                   <v-checkbox label="Login can delete patients" v-model="userModel.canDeletePatients" required></v-checkbox>
@@ -61,7 +61,7 @@ export default {
           v => !!v || 'Username is required',
           v => (v && v.length >= 3) || 'Minimum length is 3 characters',
         ],
-        passworddRules: [
+        passwordRules: [
           v => !!v || 'Password is required',
           v => (v && v.length >= 8) || 'Minimum length is 8 characters',
         ],
