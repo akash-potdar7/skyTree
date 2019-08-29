@@ -1,55 +1,29 @@
 {
   "id": 1001,
+  "parentId": null,
   "name": "India",
   "children": [
     {
       "id": 2000,
+      "parentId": 1001,
       "name": "Ladhak",
       "children": []
     },
     {
-      "id": 2001,
-      "name": "Goa",
-      "children": [
-        {
-          "id": 3001,
-          "name": "Panjim",
-          "children": []
-        },
-        {
-          "id": 3002,
-          "name": "Madgoa",
-          "children": []
-        }
-      ]
-    },
-    {
       "id": 2002,
+      "parentId": 1001,
       "name": "Karnataka",
       "children": [
         {
           "id": 3001,
+          "parentId": 2002,
           "name": "Dharwad",
           "children": []
         },
         {
-          "id": 3002,
-          "name": "Hubli",
-          "children": []
-        },
-        {
-          "id": 3003,
-          "name": "Belgaum",
-          "children": []
-        },
-        {
-          "id": 3004,
-          "name": "Udipi",
-          "children": []
-        },
-        {
           "id": 3005,
-          "name": "mysore",
+          "parentId": 2002,
+          "name": "Mysore",
           "children": []
         }
       ]
